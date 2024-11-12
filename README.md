@@ -14,9 +14,11 @@ cualitativos, cada uno ponderado en una escala de 1 a 5.
 Cuanto menor sea la puntuación, más pacíficos son los países.
 Cuanto menor es la puntuación, más pacífico es el país) - gpi
 8- Número de feminicidios (valor absoluto) - femicides_number
+
 El programa tiene varias funciones, no tiene base en otra
 página ya que son datos reales y por lo tanto tampoco se
-pueden agregar datos por el usuario. Las funciones que va a
+pueden agregar datos por el usuario.
+Las funciones que va a
 poder implementar son las siguientes:
 
 Buscar los datos completos de todos los años de un país.
@@ -24,6 +26,7 @@ Buscar los datos completos de un país de un año en específico.
 Calcular la media de le_f, o mmr, o gpi, o feminicidios de un país en específico tomando todos los años.
 
 Descripción Detallada del Funcionamiento:
+
 El proyecto implementa una estructura de árbol binario de búsqueda (BST) para almacenar los registros de datos. Esta estructura se elige por su eficiencia en las operaciones de inserción, búsqueda y recorrido de los datos. Los registros son objetos que contienen información sobre un país y año específico, así como los indicadores mencionados.
 
 El programa incluye las siguientes funcionalidades:
@@ -60,6 +63,7 @@ mostrarRecursivo: Método auxiliar recursivo que ayuda a mostrar los datos de un
 mostrarDatosDeUnAnio: Muestra los datos de un país en un año específico, utilizando una búsqueda recursiva en el árbol.
 buscar: Realiza una búsqueda en el árbol para encontrar un registro basado en el país y el año.
 buscarRecursivo: Método auxiliar recursivo que implementa la búsqueda en el árbol.
+
 Métodos de Cálculo:
 
 calcularMediaLeF: Calcula la media de la esperanza de vida femenina para un país.
@@ -67,6 +71,7 @@ calcularMediaMmr: Calcula la media de la tasa de mortalidad materna para un paí
 calcularMediaGpi: Calcula la media del índice de paz global para un país.
 calcularMediaFemicidios: Calcula la media del número de feminicidios para un país.
 calcularMediaRecursivo: Método recursivo que permite calcular la media de un indicador específico en el árbol.
+
 Métodos de Ordenación y Carga:
 
 merge: Función que implementa el algoritmo de Merge Sort para ordenar los registros en función del año.
