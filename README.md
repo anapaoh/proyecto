@@ -46,7 +46,9 @@ El cálculo se realiza mediante un recorrido recursivo del árbol, sumando los v
 Búsqueda de Datos de un Año y País (buscarDatosAnio):
 
 Similar a la función para mostrar datos de un año específico, esta función busca de manera eficiente los datos de un país en un año determinado, leyendo directamente desde el archivo CSV.
+
 Métodos Implementados:
+
 Métodos de Inserción:
 
 insertar: Inserta un nuevo registro en el árbol. La inserción sigue un orden específico basado en el año y nombre del país (alfabéticamente en caso de empate).
