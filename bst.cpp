@@ -4,26 +4,39 @@
 #include "bst.h"
 #include "registro.h"
 
+// Constructor: inicializa el árbol con una raíz nula.
 BST::BST() : raiz(nullptr) {}
 
+// Inserta un nuevo registro en el árbol.
 void BST::insertar(const Registro& registro) {
     insertarRecursivo(raiz, registro);
 }
 
+// Inserción recursiva en el árbol binario de búsqueda.
+// Complejidad:
+// - Mejor caso: O(log n), si el árbol está balanceado.
+// - Peor caso: O(n), si el árbol está completamente desbalanceado (se comporta como una lista enlazada).
+// - Caso promedio: O(log n), asumiendo que el árbol permanece relativamente balanceado.
 void BST::insertarRecursivo(Nodo*& nodo, const Registro& registro) {
     if (nodo == nullptr) {
-        nodo = new Nodo(registro);
-    } else if (registro.year < nodo->registro.year || (registro.year == nodo->registro.year && registro.country_sp < nodo->registro.country_sp)) {
-        insertarRecursivo(nodo->derecha, registro);
+        nodo = new Nodo(registro);  // Inserción en una hoja vacía.
+    } else if (registro.year < nodo->registro.year || 
+               (registro.year == nodo->registro.year && registro.country_sp < nodo->registro.country_sp)) {
+        insertarRecursivo(nodo->derecha, registro);  // Inserta en el subárbol derecho.
     } else {
-        insertarRecursivo(nodo->izquierda, registro);
+        insertarRecursivo(nodo->izquierda, registro);  // Inserta en el subárbol izquierdo.
     }
 }
 
+// Muestra todos los datos de un país.
 void BST::mostrarTodosLosDatos(const std::string& pais) {
     mostrarRecursivo(raiz, pais);
 }
 
+// Muestra recursivamente los datos de un país. Complejidad:
+// - Mejor caso: O(1), si el país se encuentra en la raíz.
+// - Peor caso: O(n), si se recorren todos los nodos en un árbol completamente desbalanceado.
+// - Caso promedio: O(log n), en un árbol balanceado, donde se buscan los datos en subárboles.
 void BST::mostrarRecursivo(Nodo* nodo, const std::string& pais) {
     if (nodo != nullptr) {
         if (nodo->registro.country_sp == pais) {
@@ -41,6 +54,7 @@ void BST::mostrarRecursivo(Nodo* nodo, const std::string& pais) {
     }
 }
 
+// Muestra los datos de un país en un año específico.
 void BST::mostrarDatosDeUnAnio(const std::string& pais, const std::string& anio) {
     Nodo* resultado = buscar(pais, anio);
     if (resultado != nullptr) {
@@ -57,10 +71,17 @@ void BST::mostrarDatosDeUnAnio(const std::string& pais, const std::string& anio)
     }
 }
 
+// Busca un nodo específico según país y año.
+// Complejidad:
+// - Mejor caso: O(1), si el nodo buscado es la raíz.
+// - Peor caso: O(n), si el árbol está desbalanceado.
+// - Caso promedio: O(log n), en un árbol balanceado.
 BST::Nodo* BST::buscar(const std::string& pais, const std::string& anio) {
     return buscarRecursivo(raiz, pais, anio);
 }
 
+// Función recursiva de búsqueda de un nodo.
+// Misma complejidad que `buscar`.
 BST::Nodo* BST::buscarRecursivo(Nodo* nodo, const std::string& pais, const std::string& anio) {
     if (nodo == nullptr) {
         return nullptr;
@@ -75,6 +96,7 @@ BST::Nodo* BST::buscarRecursivo(Nodo* nodo, const std::string& pais, const std::
     }
 }
 
+// Calcula la media de un campo específico de registros de un país.
 void BST::calcularMediaLeF(const std::string& pais) {
     double suma = 0;
     int count = 0;
@@ -86,6 +108,7 @@ void BST::calcularMediaLeF(const std::string& pais) {
     }
 }
 
+// Calcula la media de otro campo de un país.
 void BST::calcularMediaMmr(const std::string& pais) {
     double suma = 0;
     int count = 0;
@@ -97,6 +120,7 @@ void BST::calcularMediaMmr(const std::string& pais) {
     }
 }
 
+// Función para calcular la media del índice de paz global de un país.
 void BST::calcularMediaGpi(const std::string& pais) {
     double suma = 0;
     int count = 0;
@@ -108,6 +132,7 @@ void BST::calcularMediaGpi(const std::string& pais) {
     }
 }
 
+// Calcula la media de feminicidios de un país.
 void BST::calcularMediaFemicidios(const std::string& pais) {
     double suma = 0;
     int count = 0;
@@ -119,6 +144,11 @@ void BST::calcularMediaFemicidios(const std::string& pais) {
     }
 }
 
+// Recorrido recursivo para calcular la media de un campo específico.
+// Complejidad:
+// - Mejor caso: O(1), si el país está en la raíz.
+// - Peor caso: O(n), si el árbol está desbalanceado.
+// - Caso promedio: O(log n) en un árbol balanceado.
 void BST::calcularMediaRecursivo(Nodo* nodo, const std::string& pais, double& suma, int& count, std::string Registro::*campo) {
     if (nodo != nullptr) {
         if (nodo->registro.country_sp == pais) {
@@ -134,6 +164,8 @@ void BST::calcularMediaRecursivo(Nodo* nodo, const std::string& pais, double& su
     }
 }
 
+// Carga datos desde un archivo CSV al árbol.
+// Complejidad: O(n log n), donde n es la cantidad de registros en el archivo, asumiendo que el árbol se mantiene balanceado.
 void BST::cargarDatos(const std::string& archivo) {
     std::ifstream archivoCSV(archivo);
     std::string linea;
@@ -148,8 +180,8 @@ void BST::cargarDatos(const std::string& archivo) {
         std::string dato;
         Registro registro;
 
-        // Leer los datos de cada línea del CSV
-        std::getline(ss, dato, ',');  // Ignorar primer campo (número de fila)
+        // Leer los datos de cada línea del CSV.
+        std::getline(ss, dato, ',');
         registro.blanco = dato;
         std::getline(ss, registro.iso3, ',');
         std::getline(ss, registro.year, ',');
@@ -160,7 +192,7 @@ void BST::cargarDatos(const std::string& archivo) {
         std::getline(ss, registro.gpi, ',');
         std::getline(ss, registro.femicides_number, ',');
 
-        // Insertar el registro en el árbol
+        // Insertar el registro en el árbol.
         insertar(registro);
     }
 
