@@ -122,3 +122,73 @@ La media del índice de paz global de Panamá es: 1.83279
 
 Resumen de Salidas
 Salidas en consola para consultas específicas.
+
+SICT0301: Evalúa los Componentes
+
+Análisis de Complejidad para Algoritmos de Ordenamiento
+
+Para este proyecto, decidí utilizar el algoritmo de ordenamiento Merge Sort debido a su rendimiento consistente y su naturaleza estable. Dado que manejo registros que podrían contener valores iguales en campos como el año, la estabilidad de Merge Sort es clave: garantiza que el orden relativo de estos elementos se mantenga, lo que facilita el análisis de datos y asegura coherencia en los resultados. Merge Sort tiene una complejidad temporal de O(n log n) en el mejor, promedio y peor de los casos, lo cual es importante para manejar conjuntos de datos grandes sin experimentar ralentizaciones.
+
+Análisis detallado de la complejidad de Merge Sort es el siguiente:
+
+Mejor Caso (O(n log n)): Esto sucede porque, independientemente del orden inicial de los datos, el algoritmo siempre sigue dividiendo y fusionando los elementos en log(n) niveles.
+
+Caso Promedio (O(n log n)): La mayoría de las distribuciones de datos requieren una cantidad de trabajo similar para dividir y fusionar elementos.
+
+Peor Caso (O(n log n)): Aun en el caso de una lista ordenada en orden inverso o sin ningún patrón de orden, Merge Sort mantiene un rendimiento estable.
+
+Opté por Merge Sort porque su rendimiento uniforme me ayuda a evitar problemas de rendimiento a medida que el tamaño de los datos aumenta, lo cual es crucial en este programa donde el BST se construye después de ordenar los datos.
+
+Análisis de Complejidad para las Estructuras de Datos
+
+La estructura de datos principal en este programa es un árbol binario de búsqueda (BST). Elegí el BST porque sus características de búsqueda y recorrido son adecuadas para las operaciones que necesito: buscar registros, mostrar datos y calcular promedios rápidamente. El BST ofrece una estructura jerárquica, lo que me permite organizar los datos de manera que cada operación sea eficiente.
+
+La complejidad del BST en mi programa se analiza como sigue:
+
+Mejor Caso (O(log n)): Se da en un árbol balanceado, en el cual el número de niveles es log(n), y tanto la búsqueda como la inserción son eficientes.
+
+Caso Promedio (O(log n)): Un BST generalmente tiende a mantenerse balanceado en datos aleatorios, logrando un rendimiento eficiente en promedio.
+
+Peor Caso (O(n)): Ocurre si el BST se desbalancea completamente, asemejándose a una lista, lo que degrada el rendimiento. Aunque no implementé un mecanismo de balanceo, al ordenar los datos con Merge Sort antes de insertarlos, reduzco la posibilidad de que el árbol se desbalancee severamente.
+
+La elección de un BST me permite organizar y buscar datos en tiempo logarítmico en el mejor y promedio de los casos, lo cual es una gran ventaja cuando se manejan grandes cantidades de registros. Implementé el BST en bst.h, definiendo funciones como insertar y buscar para cumplir con las necesidades del programa.
+
+Análisis de Complejidad General del Programa
+
+La complejidad total del programa combina la eficiencia de Merge Sort y la estructura de BST, resultando en una complejidad general de O(n log n) para la carga y organización de datos. 
+
+Elegí esta combinación porque asegura un rendimiento consistente y manejable incluso con volúmenes de datos grandes.
+
+En detalle:
+
+Mejor Caso (O(n log n) + O(log n)): Esto ocurre cuando los datos están listos para ser organizados de forma ordenada y el BST está bien balanceado.
+
+Caso Promedio (O(n log n) + O(log n)): La mayoría de los datos pueden manejarse en log(n) niveles en el BST, garantizando una eficiencia similar.
+
+Peor Caso (O(n log n) + O(n)): Si el BST se vuelve muy desbalanceado, la complejidad puede degradarse. Este escenario sigue siendo manejable en el programa, dado que se ordenan previamente los datos.
+
+Se observa este análisis en la función cargarDatos en buscarDatos.cpp, la cual organiza y carga los registros en el BST, y en bst.h que define la estructura y funcionalidades principales del BST.
+
+SICT0302: Toma de Decisiones
+
+Selección de Algoritmo de Ordenamiento
+
+Decidí implementar Merge Sort por su estabilidad y complejidad temporal de O(n log n). Este algoritmo fue la mejor elección para ordenar los registros antes de insertarlos en el BST, ya que me asegura que incluso en los peores escenarios de datos desordenados, la eficiencia se mantendrá estable. Además, al mantener el orden relativo de los elementos iguales, me permite tener una estructura de datos coherente y fiable, que refleja de manera consistente los registros del archivo. La implementación de Merge Sort se encuentra en buscarDatos.cpp, donde la función mergeSort organiza los registros.
+
+Selección de Estructura de Datos
+
+Elegí un BST porque sus operaciones de búsqueda y recorrido son rápidas y adecuadas para las consultas específicas del programa. Esta estructura me permite organizar los datos de manera jerárquica, facilitando la consulta y el acceso eficiente a la información de cada país y año. El BST me da flexibilidad en términos de cálculo de estadísticas y acceso a datos, logrando una mayor eficiencia en el manejo de datos. Esta decisión se encuentra reflejada en el archivo bst.h, donde se implementan funciones clave como insertar y buscar.
+
+SICT0303: Implemento Acciones Científicas
+
+Implementa Mecanismos para Consultar Información de las Estructuras Correctos
+
+Para realizar consultas específicas, he implementado varios métodos en el BST. Por ejemplo, mostrarDatosDeUnAnio permite acceder a datos de un año particular y país determinado. Esta decisión garantiza que el programa pueda proporcionar información detallada según la necesidad del usuario, optimizando el BST para la consulta rápida de datos. El diseño jerárquico del BST facilita la consulta eficiente y específica, aprovechando las búsquedas rápidas de este árbol.
+
+Implementa Mecanismos de Lectura de Archivos para Cargar Datos
+
+Desarrollé una función para leer archivos CSV y cargar la información directamente en el BST. En buscarDatos.cpp, la función cargarDatos extrae, procesa y almacena cada registro en un vector de datos, que luego se ordena e inserta en el BST. Este flujo asegura que los datos se organicen de manera adecuada y se mantengan accesibles para las operaciones de consulta en el árbol. La estructura jerárquica resultante del BST permite un acceso rápido a los datos.
+
+Implementa Mecanismos de Escritura de Archivos para Guardar Datos
+
+Para conservar los resultados del programa, implementé un método guardarDatos que permite guardar los datos en un archivo CSV, brindando persistencia y acceso futuro a la información estructurada en el BST. Esto garantiza que los datos consultados y calculados por el programa se almacenen de manera fiable, facilitando el análisis y la reutilización de información.
