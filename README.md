@@ -115,7 +115,9 @@ Archivo CSV de Salida:
 Ejemplo de Salida en Consola para una Consulta de Año y País:
 
 Abreviatura: MEX, Nombre: México, Año: 2019, Esperanza de vida femenina: 77.5736, Población femenina: 63898082.0, Mortalidad materna: 33.0, Índice de paz global: 2.46, Feminicidios: 945.0
+
 La media de la esperanza de vida femenina de Chile es: 81.9766
+
 La media del índice de paz global de Panamá es: 1.83279
 
 Resumen de Salidas
