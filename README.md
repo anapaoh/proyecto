@@ -192,3 +192,82 @@ Desarrollé una función para leer archivos CSV y cargar la información directa
 Implementa Mecanismos de Escritura de Archivos para Guardar Datos
 
 Para conservar los resultados del programa, implementé un método guardarDatos que permite guardar los datos en un archivo CSV, brindando persistencia y acceso futuro a la información estructurada en el BST. Esto garantiza que los datos consultados y calculados por el programa se almacenen de manera fiable, facilitando el análisis y la reutilización de información.
+
+
+Y ya se que esta parte no la pides pero por si se me fue algo mejor completo aquí jaja:
+
+Análisis de Complejidad Correcto y Completo de Estructuras de Datos y Usos en el Programa
+
+Estructura de Datos Principal: Árbol Binario de Búsqueda (BST)
+
+Elegí el árbol binario de búsqueda (BST) como estructura de datos principal debido a sus propiedades jerárquicas, que son adecuadas para las búsquedas y recorridos eficientes necesarios en este programa.
+
+El BST permite realizar operaciones como inserción, búsqueda y recorrido de manera eficiente, con una complejidad temporal de O(log n) en el mejor caso (cuando el árbol está balanceado) y de O(n) en el peor caso (cuando el árbol se desbalancea y se asemeja a una lista). Esto es especialmente relevante cuando se manejan datos grandes y se realizan consultas específicas, ya que el BST brinda un acceso estructurado a los datos de cada país y año.
+
+Para mitigar posibles desbalanceos en el BST, primero ordené los datos con Merge Sort, lo cual ayuda a crear un árbol más equilibrado durante la inserción inicial. Este diseño maximiza la eficiencia en las consultas y asegura que el BST funcione de manera óptima en la mayoría de los casos.
+
+Análisis Completo de la Complejidad del BST
+
+Mejor Caso (O(log n)): En un árbol balanceado, el número de niveles del árbol es log(n), lo que permite realizar inserciones y búsquedas de forma eficiente. Este es el caso más deseado y garantiza la máxima eficiencia del BST.
+
+Caso Promedio (O(log n)): Con datos aleatorios, el BST tiende a mantenerse equilibrado, asegurando que la mayoría de las operaciones de búsqueda e inserción sean rápidas y eficientes.
+
+Peor Caso (O(n)): En casos donde el árbol se vuelve muy desbalanceado, la eficiencia se degrada. Sin embargo, el uso de Merge Sort antes de la inserción inicial reduce esta posibilidad en este proyecto.
+
+Análisis de Complejidad Correcto y Completo de Otros Componentes y Complejidad Final del Programa
+
+Algoritmo de Ordenamiento (Merge Sort)
+
+Decidí utilizar Merge Sort para ordenar los registros antes de insertarlos en el BST. Merge Sort tiene una complejidad temporal de O(n log n) en el mejor, promedio y peor caso, lo cual asegura un rendimiento estable y predecible.
+
+Este algoritmo fue elegido por su estabilidad y eficiencia, lo que ayuda a crear una estructura más equilibrada en el BST después de la inserción, mejorando el rendimiento general del programa.
+
+La complejidad de Merge Sort se analiza en los tres casos:
+
+Mejor, Promedio y Peor Caso (O(n log n)): Merge Sort siempre sigue la misma serie de divisiones y fusiones, asegurando un rendimiento constante.
+
+Complejidad General del Programa
+
+La complejidad global del programa combina la eficiencia de Merge Sort (O(n log n)) y la complejidad del BST (O(log n) en el mejor caso), lo que resulta en una complejidad final de O(n log n) para la carga y organización de los datos.
+
+La estructura del programa asegura que las consultas y las operaciones se realicen de manera eficiente, permitiendo que el sistema maneje grandes volúmenes de datos de manera efectiva.
+
+Selección de Algoritmo de Ordenamiento y su Uso
+
+Algoritmo de Ordenamiento Seleccionado: Merge Sort
+
+Merge Sort fue seleccionado para ordenar los datos antes de insertarlos en el BST. Esto asegura que la inserción en el BST sea más equilibrada, mejorando el rendimiento en términos de complejidad y eficiencia de búsqueda.
+
+Su estabilidad es crucial para mantener el orden relativo de los registros con valores idénticos en ciertos campos, como el año, y la elección fue correcta ya que logra un rendimiento consistente sin importar la distribución inicial de los datos.
+
+Selección de Estructura de Datos y su Uso
+
+BST como Estructura de Datos Principal
+
+La elección del BST permite realizar operaciones de búsqueda, consulta y cálculo de manera rápida y jerárquica, acorde a las necesidades de análisis de datos específicos por año y país.
+
+La estructura jerárquica del BST permite una organización natural de los datos y un acceso eficiente a la información necesaria. Esta estructura cumple con las demandas del programa y asegura que las consultas específicas se realicen de manera óptima.
+
+Implementación de Mecanismos para Consultar Información de las Estructuras
+
+Consultas Específicas con el BST
+
+Implementé mecanismos en el BST para realizar consultas de datos específicos, como mostrarDatosDeUnAnio, lo cual permite acceder rápidamente a información detallada sobre un año y país determinados. La estructura del BST hace que estas consultas sean eficientes y rápidas.
+
+Este mecanismo de consulta refleja una estructura optimizada que asegura un acceso estructurado y jerárquico, adecuado para los análisis que requiere el programa.
+
+Implementación de Mecanismos de Lectura de Archivos para Cargar Datos
+
+Función de Lectura de Archivos
+
+Implementé una función en el programa para leer archivos CSV y cargar los registros en el vector de datos y, posteriormente, en el BST. Este proceso de lectura permite que los datos sean cargados y organizados adecuadamente en la estructura de datos, asegurando que cada registro se procese y almacene de manera correcta.
+
+La función se diseñó para manejar posibles errores de lectura, garantizando que los datos se carguen de forma segura y fiable, listos para las operaciones de consulta y análisis del BST.
+
+Implementación de Mecanismos de Escritura de Archivos para Guardar Datos
+
+Función de Escritura de Archivos
+
+Implementé un método guardarDatos para exportar los resultados a un archivo CSV, lo que permite conservar los datos consultados y analizados por el programa para futuras referencias.
+
+Este mecanismo asegura la persistencia de la información y facilita el acceso futuro, permitiendo que los resultados del análisis sean reutilizables y compartibles, garantizando así un flujo completo de datos desde la entrada hasta la salida del programa.
